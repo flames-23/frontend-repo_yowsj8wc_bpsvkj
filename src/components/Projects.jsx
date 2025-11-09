@@ -24,19 +24,19 @@ const ITEMS = [
   },
 ];
 
-function ProjectCard({ item, index }) {
+function ProjectCard({ item }) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
-  const y = useTransform(scrollYProgress, [0, 1], [50, -50]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 1], [0, 1, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [60, -60]);
+  const opacity = useTransform(scrollYProgress, [0, 0.15, 1], [0, 1, 1]);
 
   return (
-    <motion.div ref={ref} style={{ y, opacity }} className="group rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-white/[0.03] p-6 backdrop-blur">
-      <div className="text-xs text-cyan-300/80 uppercase tracking-wider">{item.tag}</div>
-      <h3 className="mt-2 text-xl font-semibold">{item.title}</h3>
-      <p className="mt-2 text-slate-300">{item.desc}</p>
+    <motion.div ref={ref} style={{ y, opacity }} className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+      <div className="text-xs text-rose-600 uppercase tracking-wider">{item.tag}</div>
+      <h3 className="mt-2 text-xl font-semibold text-slate-900">{item.title}</h3>
+      <p className="mt-2 text-slate-600">{item.desc}</p>
       <div className="mt-4">
-        <button className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/15 transition text-sm">View details</button>
+        <button className="px-4 py-2 rounded-lg bg-rose-600 text-white hover:bg-rose-500 transition text-sm">View details</button>
       </div>
     </motion.div>
   );
@@ -45,18 +45,17 @@ function ProjectCard({ item, index }) {
 export default function Projects() {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start start', 'end end'] });
-  const x = useTransform(scrollYProgress, [0, 1], ['0%', '-10%']); // subtle parallax
+  const x = useTransform(scrollYProgress, [0, 1], ['0%', '-8%']); // subtle parallax for heading
 
   return (
-    <section id="projects" className="relative py-24">
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/10 to-transparent" />
+    <section id="projects" className="relative py-24 bg-white">
       <div className="max-w-6xl mx-auto px-4" ref={containerRef}>
-        <motion.h2 style={{ x }} className="text-3xl md:text-4xl font-bold">Featured Projects</motion.h2>
-        <p className="mt-2 text-slate-300 max-w-2xl">A selection of work spanning web apps, infrastructure, and delightful user experiences.</p>
+        <motion.h2 style={{ x }} className="text-3xl md:text-4xl font-bold text-slate-900">Featured Projects</motion.h2>
+        <p className="mt-2 text-slate-600 max-w-2xl">A selection of work spanning web apps, infrastructure, and delightful user experiences.</p>
 
         <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {ITEMS.map((item, i) => (
-            <ProjectCard key={i} item={item} index={i} />
+            <ProjectCard key={i} item={item} />
           ))}
         </div>
       </div>

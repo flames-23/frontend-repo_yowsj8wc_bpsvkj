@@ -18,15 +18,15 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-100">
+    <div className="min-h-screen bg-white text-slate-900">
       <Navbar />
       <main>
         <Hero />
         <Projects />
         <Contact />
       </main>
-      <footer className="py-8 text-center text-sm text-slate-400">
-        © {new Date().getFullYear()} Your Name — Built with love, motion, and 3D
+      <footer className="py-8 text-center text-sm text-slate-500">
+        © {new Date().getFullYear()} Your Name — Built with motion and 3D
       </footer>
     </div>
   );
